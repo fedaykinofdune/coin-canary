@@ -21,3 +21,23 @@ module CoinCanary
     # config.i18n.default_locale = :de
   end
 end
+
+module Settings
+  KEYS = if Rails.env.production?
+    ENV
+  else
+    YAML.load_file("config/secrets.yml")[Rails.env]
+  end
+
+  module Keys
+    extend self
+
+    def method_missing(method)
+      KEYS[method.to_s]
+    end
+  end
+
+  def self.keys
+    Keys
+  end
+end
