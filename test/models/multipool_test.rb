@@ -1,23 +1,26 @@
 require 'test_helper'
 
-class MinersTest < ActiveSupport::TestCase
+class MultipoolTest < ActiveSupport::TestCase
   setup do
     fake_multipool
   end
 
-  test ".working? should return true if all workers are working" do
-    assert Miners.working?
+  test "coin.current should return the currency with the highest hashrate and the hashrate" do
+    assert_equal({ name: "nvc", hashrate: 608 }, Multipool::Coin.current)
   end
 
-  test ".current_mining should return the currency with the highest hashrate and the hashrate" do
-    assert_equal ["nvc", 608], Miners.currently_mining
+  test "worker.all should return workers name and status" do
+    assert_equal({
+      "alexp.w1" => :online,
+      "alexp.w2" => :offline
+    }, Multipool::Worker.all)
   end
 
   private
 
   def fake_multipool
     fake_response = stub(code: 200, parsed_response: JSON.parse(fake_json_response))
-    HTTParty.expects(:get).returns(fake_response)
+    HTTParty.expects(:get).at_least(1).returns(fake_response)
   end
 
   def fake_json_response

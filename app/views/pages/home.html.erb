@@ -1,0 +1,9 @@
+<h1><%= @coin[:name] %></h1>
+<br />
+<h2><%= @coin[:hashrate] %></h2>
+<% Multipool::Worker.all.each do |name, status| %>
+  <br />
+  <h1><%= name %></h1>
+  <br />
+  <h2><%= status %></h2>
+<% end %>
