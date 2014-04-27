@@ -9,5 +9,6 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 
 gem 'spring', group: :development
+gem 'mocha'
 
 gem 'httparty'
