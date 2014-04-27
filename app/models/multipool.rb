@@ -2,7 +2,7 @@ module Multipool
   module API
     extend self
 
-    BASE_URL = "http://api.multipool.us/api.php?api_key=#{Settings.keys.multipool_api_key}"
+    BASE_URL = "http://api.multipool.us/api.php?api_key=#{Settings.keys['MULTIPOOL_API_KEY']}"
     GET_CACHE_KEY = "multipool:api:get"
 
     def get
