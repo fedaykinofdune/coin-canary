@@ -1,1 +1,1 @@
-CoinCanary::Application.config.secret_key_base = Settings.keys.secret_key_base
+CoinCanary::Application.config.secret_key_base = Settings.keys["SECRET_KEY_BASE"]

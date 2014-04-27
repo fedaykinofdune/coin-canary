@@ -29,15 +29,7 @@ module Settings
     YAML.load_file("config/secrets.yml")[Rails.env]
   end
 
-  module Keys
-    extend self
-
-    def method_missing(method)
-      KEYS[method.to_s]
-    end
-  end
-
   def self.keys
-    Keys
+    KEYS
   end
 end
