@@ -2,12 +2,45 @@ body {
   background-color: #33cdc7;
   color: #006561;
   font-family: 'Oswald', 'sans-serif';
-  padding-top: 100px;
+  padding-top: 40px;
   text-align: center;
-  text-transform: uppercase;
+}
+
+h1, h2, h3 {
+  font-weight: 300;
+  margin: 0;
 }
 
 h1, h2 {
-  display: inline-block;
-  margin: 0 auto;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: 100px;
+  line-height: 80px;
+}
+
+h2 {
+  font-size: 60px;
+  line-height: 70px;
+}
+
+.align-left {
+  float: left;
+}
+
+.align-right {
+  float: right;
+}
+
+.worker-list {
+  margin: auto;
+  width: 140px;
+}
+
+.worker-list p {
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 20px;
+  margin: 0;
 }

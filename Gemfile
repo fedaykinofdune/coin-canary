@@ -2,6 +2,10 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.1.0'
 gem 'pg'
+gem 'thin'
+gem 'memcachier'
+gem 'dalli'
+gem 'rails_12factor', group: :production
 
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'

@@ -1,9 +1,9 @@
 <h1><%= @coin[:name] %></h1>
-<br />
 <h2><%= @coin[:hashrate] %></h2>
+
+<div class='worker-list'>
 <% Multipool::Worker.all.each do |name, status| %>
-  <br />
-  <h1><%= name %></h1>
-  <br />
-  <h2><%= status %></h2>
+  <p class='align-left'><%= name %></p>
+  <p class='align-right'><%= status %></p>
 <% end %>
+</div>

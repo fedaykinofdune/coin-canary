@@ -3,9 +3,10 @@ module Multipool
     extend self
 
     BASE_URL = "http://api.multipool.us/api.php?api_key=#{Settings.keys.multipool_api_key}"
+    GET_CACHE_KEY = "multipool:api:get"
 
     def get
-      Rails.cache.fetch("multipool:api:get", expires_in: 5.minutes) do
+      Rails.cache.fetch(GET_CACHE_KEY, expires_in: 1.hour) do
         response = HTTParty.get(BASE_URL, format: :json)
         case response.code
         when 200
