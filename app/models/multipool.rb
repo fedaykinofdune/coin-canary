@@ -6,7 +6,7 @@ module Multipool
     GET_CACHE_KEY = "multipool:api:get"
 
     def get
-      Rails.cache.fetch(GET_CACHE_KEY, expires_in: 1.hour) do
+      Rails.cache.fetch(GET_CACHE_KEY, expires_in: 5.minutes) do
         response = HTTParty.get(BASE_URL, format: :json)
         case response.code
         when 200
