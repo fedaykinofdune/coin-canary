@@ -51,6 +51,7 @@ module Multipool
         to: Settings.keys['TWILIO_TO_NUMBER'],
         body: messages
       })
+      messages
     end
 
     def all
