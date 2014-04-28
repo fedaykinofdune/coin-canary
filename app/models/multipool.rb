@@ -39,6 +39,20 @@ module Multipool
 
     ACTIVE = ['alexp.w1', 'alexp.w2']
 
+    def supervisor
+      return unless all.any? {|name, status| status == :offline }
+      messages = all.inject([]) do |array, (name, status)|
+        array << name if status == :offline
+        array
+      end.join(', ')
+      messages += " is/are offline"
+      TwilioClient.account.messages.create({
+        from: Settings.keys['TWILIO_FROM_NUMBER'],
+        to: Settings.keys['TWILIO_TO_NUMBER'],
+        body: messages
+      })
+    end
+
     def all
       result = ACTIVE.inject({}) {|hash, name| hash[name] = :offline; hash}
       API.get["workers"].each do |coin_name, workers|

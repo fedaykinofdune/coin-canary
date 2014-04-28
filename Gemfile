@@ -22,3 +22,4 @@ group :production do
 end
 
 gem 'httparty'
+gem 'twilio-ruby'
